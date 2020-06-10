@@ -13,22 +13,36 @@ def get_filters():
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
     print('Hello! Let\'s explore some US bikeshare data!')
+
+	# Generates lists of the necessary filters, including cities, months, and days
+	# If a new city is to be inspected with this code, it MUST be added to this list.
     city_list = ['chicago','new york city', 'washington']
     month_list = ['january','february','march','april','may','june','july','august','september','october','november','december','none']
     day_list = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday','none']
+
+	# Obtains user inputs and catches bad inputs
     try: #probably need to move this try statement to be on each while loop instead to catch its keyboard interupt clause but I am running this in Jupyter and can't seem to use ctrl-C and thus couldn't trouble shoot it
+		# Obtains the city input from the user until they state one of the cities in the city list
         city = input('Would you like to see data for Chicago, New York City, or Washington?\n').lower()
         while False == any(ele == city for ele in city_list): # determines if input is in the list of cities
             city = input('Invalid input, please enter one of the three cities to investigate: Chicago, New York City, or Washington:\n').lower()
+
+		# Obtains the month input from the user until they state one of the months in the month list
         month = input('Would you like to filter by month? Please state the month you would like to explore or \"none\" to look at all months.\n').lower()
         while False == any(ele == month for ele in month_list): # determines if input is in the list of months
             month = input('Invalid input, please enter one of the months of the year or \"none\" to investigate all months:\n').lower()
+
+		# Obtains the day input from the user until they state one of the days in the day list
         day = input('Would you like to filter by day? Please state the day you would like to explore or \"none\" to look at all days.\n').lower()
         while False == any(ele == day for ele in day_list): # determines if input is in the list of days
             day = input('Invalid input, please enter one of the days of the week or none to investigate all days:\n').lower()
         return city, month, day
+
+	# Catches keyboard interrupt errors that allow the user to quit
     except KeyboardInterrupt:
         sys.exit()
+
+	# Catches all other unexpected errors
     except:
         print('Invalid input, please try again. Remember to respond to each question with the name of the city, month, day, or none if applicable.')
 
