@@ -170,9 +170,7 @@ def raw_data(df):
     while first_prompt == 'yes' and df.shape[0] > 4:
         # First condition checks to see if they want to see more data subsets
         # Second condition checks to see if the data frame has 5 rows of data to display using the head() function and to remove via drop. I have not actually tried to see if this would throw an error but I imagine it would.
-
-
-
+		
         # Printing the first 5 rows of the data frame as well as some spacers for clarity. Probably could manually print instead of using head() for better format but its not necessary
         print('-'*40)
         print(df.head())
@@ -224,4 +222,3 @@ def main():
 
 if __name__ == "__main__":
 	main()
-    
