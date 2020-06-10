@@ -1,15 +1,12 @@
-### Date created
-Include the date you created this project and README file.
+### June 9th 2020
 
-### Project Title
-Replace the Project Title
+### Bikeshare Project
 
 ### Description
-Describe what your project is about and what it does
+This project imports bikeshare data and calculates some useful statistics about the bike rental and its user. It is currently set up to use data from New York City, Washington, and Chicago in a .csv data format.
 
 ### Files used
-Include the files used
+bikeshare.py
 
 ### Credits
-It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
-
+Udacity development team
