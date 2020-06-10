@@ -42,17 +42,26 @@ def load_data(city, month, day):
     Returns:
         df - Pandas DataFrame containing city data filtered by month and day
     """
-    # gets the numberical equivalent of the months and days of the week to filter data
+
+    # generate lists of months and days to their numerical equivalents
     month_list = {'january':1, 'february':2,'march':3,'april':4,'may':5,'june':6,'none':-1}
     day_list = {'monday':0,'tuesday':1,'wednesday':2,'thursday':3,'friday':4,'saturday':5,'sunday':6,'none':-1}
+
+	# converts the user input into proper .csv file notation
     city = city.replace(' ','_') +'.csv'
+	df = pd.read_csv(city)
+
+	# Obtains the numerical equivalents for the month and day user inputs
     month_num = month_list.get(month)
     day_num = day_list.get(day)
-    df = pd.read_csv(city)
+
+	# Generate the necessary time values per bike rental to organize information into day and month categories
     df['Start Time'] = pd.to_datetime(df['Start Time']) # converts time to the proper object
     df['Month'] = df['Start Time'].dt.month # Gets the month of the timestamp
     df['Day of the Week'] = df['Start Time'].dt.dayofweek # Gets the day of the week, 0-6 is Monday to Sunday
     df['Hour'] = df['Start Time'].dt.hour # Gets the hours of the day
+
+	# Filters the data based on user input
     if month_num != -1: # filters data for months
         df = df[df['Month'] == month_num]
     if day_num != -1: # filters data for days
@@ -224,4 +233,3 @@ def main():
 
 if __name__ == "__main__":
 	main()
-    
